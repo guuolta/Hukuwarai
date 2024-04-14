@@ -64,6 +64,11 @@ public class ObjectBase : MonoBehaviour
     /// </summary>
     protected virtual CompositeDisposable DisposeEvent(CompositeDisposable disposable)
     {
+        if(disposable.Count == 0)
+        {
+            return disposable;
+        }
+
         disposable.Dispose();
         return new CompositeDisposable();
     }

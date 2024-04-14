@@ -3,12 +3,14 @@ using DG.Tweening;
 using System.Threading;
 using UnityEngine;
 
+
+[RequireComponent(typeof(CanvasGroup))]
 public class UIBase : GameObjectBase
 {
     [Header("押せないときの透明度")]
     [Range(0f, 1f)]
     [SerializeField]
-    private float _disInteractiveColor = 0.8f;
+    private float _disInteractiveColor = 0f;
     /// <summary>
     /// アニメーションの時間
     /// </summary>
@@ -37,8 +39,6 @@ public class UIBase : GameObjectBase
             if (_canvasGroup == null)
             {
                 _canvasGroup = GetComponent<CanvasGroup>();
-                if (_canvasGroup == null)
-                    _canvasGroup = gameObject.AddComponent<CanvasGroup>();
             }
 
             return _canvasGroup;
@@ -61,64 +61,5 @@ public class UIBase : GameObjectBase
         {
             CanvasGroup.alpha = _disInteractiveColor;
         }
-    }
-
-    /// <summary>
-    /// UI表示
-    /// </summary>
-    /// <param name="canvasGroup"></param>
-    public virtual void Show(CanvasGroup canvasGroup)
-    {
-        canvasGroup.alpha = 1f;
-    }
-
-    /// <summary>
-    /// UIを消す
-    /// </summary>
-    /// <param name="canvasGroup"></param>
-    public virtual void Hide(CanvasGroup canvasGroup)
-    {
-        canvasGroup.alpha = 0;
-    }
-
-    /// <summary>
-    /// UIをフェードで表示
-    /// </summary>
-    /// <param name="canvasGroup"></param>
-    /// <param name="ct"></param>
-    /// <returns></returns>
-    public virtual async UniTask ShowAsync(CanvasGroup canvasGroup, CancellationToken ct)
-    {
-        canvasGroup.DOComplete();
-        if (canvasGroup.alpha == 1)
-        {
-            return;
-        }
-
-        await canvasGroup.DOFade(1, AnimationTime)
-            .SetEase(Ease.InSine)
-            .ToUniTask(cancellationToken: ct);
-        ChangeInteractive(true);
-    }
-
-    /// <summary>
-    /// UIを消す
-    /// </summary>
-    /// <param name="canvasGroup"></param>
-    /// <param name="ct"></param>
-    /// <returns></returns>
-    public virtual async UniTask HideAsync(CanvasGroup canvasGroup, CancellationToken ct)
-    {
-        canvasGroup.DOComplete();
-        if (canvasGroup.alpha == 0)
-        {
-            return;
-        }
-
-        await canvasGroup.DOFade(0, AnimationTime)
-            .SetEase(Ease.OutSine)
-            .ToUniTask(cancellationToken: ct);
-
-        ChangeInteractive(false);
     }
 }
