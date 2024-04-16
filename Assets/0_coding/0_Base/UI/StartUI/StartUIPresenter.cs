@@ -21,9 +21,15 @@ public class StartUIPresenter : PresenterBase<StartUIView>
             .Subscribe(async value => 
             {
                 if (value)
+                {
                     await View.ShowAsync(this.GetCancellationTokenOnDestroy());
+                    ChangeInteractive(true);
+                }
                 else
+                {
                     await View.HideAsync(this.GetCancellationTokenOnDestroy());
+                    ChangeInteractive(false);
+                }
             });
     }
 }
