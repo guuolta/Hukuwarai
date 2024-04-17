@@ -5,9 +5,9 @@ using UniRx;
 
 public class GameSetter : ObjectBase
 {
-    protected override void Init()
+    protected override void Awake()
     {
-        base.Init();
+        base.Awake();
         GameStateManager.ChangeState(GameState.Start);
 
         GameStateManager.State.Subscribe(state =>

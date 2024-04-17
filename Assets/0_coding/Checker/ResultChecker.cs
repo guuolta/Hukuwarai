@@ -5,9 +5,9 @@ using UniRx;
 
 public class ResultChecker : SingletonObjectBase<ResultChecker>
 {
-    protected override void SetEvent()
+    protected override void Start()
     {
-        base.SetEvent();
+        base.Start();
         SetEventmoveResult();
     }
 

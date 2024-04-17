@@ -8,9 +8,9 @@ public class FacePartOperator : ObjectBase
     private ObservableEventTrigger _eventTrigger;
     private CompositeDisposable _disposable = new CompositeDisposable();
 
-    protected override void Init()
+    protected override void Awake()
     {
-        base.Init();
+        base.Awake();
         SetEventTrigger();
     }
 

@@ -11,7 +11,7 @@ public class StartUIView : ViewBase
 
     Sequence _sequence;
 
-    protected override void Init()
+    protected override void Awake()
     {
         SetLoopAnimation(Ct);
     }

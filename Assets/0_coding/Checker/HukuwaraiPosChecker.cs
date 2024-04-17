@@ -9,9 +9,9 @@ public class HukuwaraiPosChecker : SingletonObjectBase<HukuwaraiPosChecker>
     private float faceRangeX;
     private float faceRangeY;
 
-    protected override void Init()
+    protected override void Awake()
     {
-        base.Init();
+        base.Awake();
         GetFaceRange(_faceRectTransform, out faceRangeX, out faceRangeY);
     }
 

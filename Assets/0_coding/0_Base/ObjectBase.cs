@@ -20,44 +20,21 @@ public class ObjectBase : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        Init();
-    }
-
-    private void Start()
-    {
-        SetEvent();
-    }
-
-    private void OnDestroy()
-    {
-        Destroy();
-    }
-
-    /// <summary>
-    /// 変数の初期化など
-    /// </summary>
-    protected virtual void Init()
+    protected virtual void Awake()
     {
 
     }
 
-    /// <summary>
-    /// イベントの発行
-    /// </summary>
-    protected virtual void SetEvent()
+    protected virtual void Start()
     {
 
     }
 
-    /// <summary>
-    /// インスタンス破壊時にする処理
-    /// </summary>
-    protected virtual void Destroy()
+    protected virtual void OnDestroy()
     {
 
     }
+
 
     /// <summary>
     /// イベント削除

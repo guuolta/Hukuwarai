@@ -7,9 +7,9 @@ using UniRx;
 [RequireComponent(typeof(StartUIView))] 
 public class StartUIPresenter : PresenterBase<StartUIView>
 {
-    protected override void SetEvent()
+    protected override void Start()
     {
-        base.SetEvent();
+        base.Start();
         SetEventShow();
     }
 

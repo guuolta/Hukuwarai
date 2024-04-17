@@ -11,9 +11,9 @@ public class FacePart : UIBase
     private FacePartView _view;
     private System.Action _putAction;
 
-    protected override void Init()
+    protected override void Awake()
     {
-        base.Init();
+        base.Awake();
         
         _operator = GetComponent<FacePartOperator>();
         _view = GetComponent<FacePartView>();
@@ -29,9 +29,9 @@ public class FacePart : UIBase
         };
     }
 
-    protected override void SetEvent()
+    protected override void Start()
     {
-        base.SetEvent();
+        base.Start();
         _operator.SetEventDrag(RectTransform, _putAction);
         SetEventShow(Ct);
     }

@@ -22,7 +22,7 @@ public class SingletonObjectBase<T> : ObjectBase
         }
     }
 
-    protected override void Init()
+    protected override void Awake()
     {
         if (_instance != null && _instance != this)
         {
@@ -33,7 +33,7 @@ public class SingletonObjectBase<T> : ObjectBase
         _instance = this as T;
     }
 
-    protected override void Destroy()
+    protected override void OnDestroy()
     {
         if (_instance == this)
         {

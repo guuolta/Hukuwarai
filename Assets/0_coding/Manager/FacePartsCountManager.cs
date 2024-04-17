@@ -14,15 +14,15 @@ public class FacePartsCountManager : SingletonObjectBase<FacePartsCountManager>
     private int _partCount;
     private ReactiveProperty<int> _putCount = new ReactiveProperty<int>(0);
 
-    protected override void Init()
+    protected override void Awake()
     {
-        base.Init();
+        base.Awake();
         _partCount = _facePartList.Count;
     }
 
-    protected override void SetEvent()
+    protected override void Start()
     {
-        base.SetEvent();
+        base.Start();
         SetEventCheckCount();
     }
 
